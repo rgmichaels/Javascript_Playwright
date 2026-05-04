@@ -1,0 +1,11 @@
+{
+  "dropdown": {
+    "option": "Option 1"
+  },
+  "inputs": {
+    "number": 42
+  },
+  "statusCodes": {
+    "success": 200
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "javascript_playwright",
+  "version": "1.0.0",
+  "description": "Production-ready Playwright + Cucumber + JavaScript E2E automation framework for the-internet.herokuapp.com.",
+  "main": "index.js",
+  "scripts": {
+    "clean": "node scripts/clean.js",
+    "pretest": "npm run clean",
+    "test": "cucumber-js",
+    "test:smoke": "cucumber-js --tags @smoke",
+    "test:regression": "cucumber-js --tags @regression",
+    "test:wip": "cucumber-js --tags @wip",
+    "test:headed": "HEADLESS=false cucumber-js",
+    "report": "node scripts/generate-report.js",
+    "posttest": "npm run report",
+    "install:browsers": "playwright install --with-deps chromium"
+  },
+  "keywords": [
+    "playwright",
+    "cucumber",
+    "bdd",
+    "e2e",
+    "pom"
+  ],
+  "author": "rgmichaels",
+  "license": "MIT",
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.2.0",
+    "@cucumber/html-formatter": "^21.7.0",
+    "@playwright/test": "^1.52.0",
+    "dotenv": "^16.5.0",
+    "fs-extra": "^11.3.0",
+    "multiple-cucumber-html-reporter": "^3.9.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}

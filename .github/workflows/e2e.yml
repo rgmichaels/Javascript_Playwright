@@ -1,0 +1,55 @@
+name: E2E Tests
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  e2e:
+    name: Playwright Cucumber E2E
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    env:
+      BASE_URL: https://the-internet.herokuapp.com/
+      HEADLESS: true
+      RETRIES: 1
+      PARALLEL: 2
+      TRACE_ON_RETRY: true
+      CAPTURE_HTML_ON_FAILURE: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Run smoke suite
+        run: npm run test:smoke
+
+      - name: Upload reports and artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-artifacts
+          path: |
+            reports/
+            test-results/
+            artifacts/
+            playwright-report/
+          if-no-files-found: ignore
+          retention-days: 14
