@@ -20,6 +20,12 @@ class AddRemoveElementsPage extends BasePage {
     await this.clickSafe(this.page.getByRole('button', { name: 'Delete' }).first());
   }
 
+  async deleteElements(count) {
+    for (let index = 0; index < count; index += 1) {
+      await this.deleteElement();
+    }
+  }
+
   async expectDeleteButtonCount(count) {
     await expect(this.page.getByRole('button', { name: 'Delete' })).toHaveCount(count);
   }
