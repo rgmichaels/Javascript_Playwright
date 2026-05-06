@@ -10,6 +10,12 @@ class AddRemoveElementsPage extends BasePage {
     await this.clickSafe(this.page.getByRole('button', { name: 'Add Element' }));
   }
 
+  async addElements(count) {
+    for (let index = 0; index < count; index += 1) {
+      await this.addElement();
+    }
+  }
+
   async deleteElement() {
     await this.clickSafe(this.page.getByRole('button', { name: 'Delete' }).first());
   }
