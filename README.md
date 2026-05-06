@@ -176,6 +176,7 @@ npx playwright show-trace test-results/traces/<trace-file>.zip
 - Inputs fixture-driven numeric entry flow.
 - JavaScript Alerts flow.
 - Status Codes response validation flow.
+- Drag and Drop label swap flow.
 
 ## Clean Initial Commit Message
 
