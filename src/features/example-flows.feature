@@ -43,3 +43,10 @@ Feature: Example feature flows
     Given I am on the Status Codes page
     When I open the configured success status code
     Then the configured success status page is displayed
+
+  @smoke
+  Scenario: Drag column A to column B swaps their labels
+    Given I am on the Drag and Drop page
+    When I drag column A to column B
+    Then column A displays "B"
+    And column B displays "A"
